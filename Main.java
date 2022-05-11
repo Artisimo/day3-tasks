@@ -17,8 +17,9 @@ public class Main {
         }
 
         System.out.println("Copied array: ");
-        int[] copiedArray = toCopy;    // Copy the array.
+        int[] copiedArray = new int[4];    // Copy the array.
         for(int i = 0; i < 4; i++){
+            copiedArray[i] = toCopy[i];
             System.out.println(copiedArray[i]);
         }
     }
