@@ -30,7 +30,7 @@ public class RaceCar extends Car{
 
     public void pitStop(){
         this.tyreWearPercent = 100;
-        System.out.println("Put on new tires, now they are at " + this.tyreWearPercent);
+        System.out.println("Put on new tires, now they are at " + this.tyreWearPercent + "%");
     }
 
     public static void main(String[] args) {

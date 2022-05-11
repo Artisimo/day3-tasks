@@ -5,6 +5,7 @@ public class Vehicle {
     protected int gear;
     protected int speed;
     protected int maxSpeed;
+    protected int directionOfTravelDegrees; // 90 degrees is north, 0 degrees is east
 
     public Vehicle(){}
 
@@ -15,9 +16,10 @@ public class Vehicle {
         this.nrOfGears = nrOfGears;
         this.gear = 0;
         this.speed = 0;
+        this.directionOfTravelDegrees = 90;
     }
 
-    public void printProperties(){
+    void printProperties(){
         System.out.println('\n' + "Current speed: " + this.speed);
         if(this.gear == -1){
             System.out.println("Current gear: reverse");
@@ -62,15 +64,18 @@ public class Vehicle {
     }
 
     public void turnRight(){
-        System.out.println("Turned Right");
+        this.directionOfTravelDegrees = (this.directionOfTravelDegrees - 90) % 360;
+        System.out.println("Turned Right, now direction of travel is " + directionOfTravelDegrees + " degrees");
     }
 
     public void turnLeft(){
-        System.out.println("Turned left");
+        this.directionOfTravelDegrees =  (this.directionOfTravelDegrees + 90) % 360;;
+        System.out.println("Turned left, now direction of travel is " + directionOfTravelDegrees + " degrees");
     }
 
     public void turnAround(){
-        System.out.println("Turned around");
+        this.directionOfTravelDegrees =  (this.directionOfTravelDegrees + 180) % 360;;
+        System.out.println("Turned around, now direction of travel is " + directionOfTravelDegrees + " degrees");
     }
 
     public static void main(String[] args) {
