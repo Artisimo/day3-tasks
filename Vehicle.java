@@ -43,7 +43,7 @@ public class Vehicle {
         }
     }
     public void setSpeed(int n){
-        if(this.speed + n > maxSpeed){
+        if(n > maxSpeed){
             this.speed = maxSpeed;    // Cars max speed is 200 km/h
             System.out.println("Cannot go quicker than 200 km/h. Speed is now: " + this.speed);
         }else if(n < 0){
@@ -74,20 +74,19 @@ public class Vehicle {
     }
 
     public static void main(String[] args) {
-        /*
         Vehicle v = new Vehicle("BMW", "Red", 200, 6);
         v.turnAround();
         v.turnLeft();
         v.turnRight();
 
         v.setGear(1);
-        v.speedUp(15);
+        v.setSpeed(15);
         v.setGear(2);
-        v.speedUp(40);
+        v.setSpeed(40);
         v.setGear(3);
-        v.speedUp(70);
+        v.setSpeed(70);
         v.setGear(0);
         v.stop();
-        */
+        v.printProperties();
     }
 }

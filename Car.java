@@ -1,13 +1,13 @@
 public class Car extends Vehicle{
     protected String model;
-
+    public Car(){};
     public Car(String brand, String color, int topSpeed, int nrOfGears, String model){
         super(brand, color, topSpeed, nrOfGears);
         this.model = model;
     }
     public void printProperties(){
         super.printProperties();
-        System.out.println("Model: " + this.model + '\n');
+        System.out.println("Model: " + this.model);
     }
 
     public static void main(String[] args) {
