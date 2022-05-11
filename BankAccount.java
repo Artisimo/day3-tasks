@@ -32,6 +32,7 @@ public class BankAccount {
 
     public void transferFrom(double amount, BankAccount transferTo){
         if(amount < this.balance){
+            this.balance -= amount;
             transferTo.deposit(amount);
         }else{
             System.out.println("Transfer cancelled. You are trying to transfer " + amount + " units, but only " + this.balance + " are available.");
@@ -48,7 +49,7 @@ public class BankAccount {
         A.deposit(5001);
         A.printBalance();
 
-        B.transferFrom(30, A);
+        B.transferFrom(24, A);
         A.printBalance();
         B.printBalance();
     }
