@@ -8,21 +8,31 @@ public class BankAccount {
         System.out.println("Created a bank account with balance: " + this.balance);
     }
 
-    public void deposit(double amount){
-        if(amount > 5000){
+    public boolean deposit(double amount){
+        if(amount < 0){
+            System.out.println("Cannot deposit a negative number");
+            return false;
+        }else if(amount > 5000){
             System.out.println( "Transaction cancelled. Max deposit - 5000 | Your deposit: " + amount);
+            return false;
         }else{
             this.balance += amount;
             System.out.println( "Deposited: " + amount);
+            return true;
         }
     }
 
-    public void withdraw(double amount){
-        if(amount < this.balance){
+    public boolean withdraw(double amount){
+        if(amount < 0){
+            System.out.println("Cannot withdraw a negative number");
+            return false;
+        }else if(amount < this.balance){
             this.balance -= amount;
             System.out.println( "Withdrew: " + amount);
+            return true;
         }else{
             System.out.println("There is not enough funds.");
+            return false;
         }
     }
 
@@ -30,12 +40,17 @@ public class BankAccount {
         System.out.println("Balance is: " + this.balance);
     }
 
-    public void transferFrom(double amount, BankAccount transferTo){
-        if(amount < this.balance){
+    public boolean transferFrom(double amount, BankAccount transferTo){
+        if(amount < 0){
+            System.out.println("Cannot transfer negative number");
+            return false;
+        }else if(amount < this.balance){
             this.balance -= amount;
             transferTo.deposit(amount);
+            return true;
         }else{
             System.out.println("Transfer cancelled. You are trying to transfer " + amount + " units, but only " + this.balance + " are available.");
+            return false;
         }
     }
 
