@@ -32,50 +32,65 @@ public class Vehicle {
         System.out.println("Brand: " + this.brand);
     }
 
-    public void setGear(int n){
+    public boolean setGear(int n){
         if(n > nrOfGears){
-            this.gear = nrOfGears;
-            System.out.println(this.nrOfGears + " is the highest gear. The car is now in gear " + this.gear);
-        }else if(n <= -1){
+            System.out.println("Too big of a gear. The car is still in gear " + this.gear);
+            return false;
+        }else if(n == -1){
             this.gear = -1;
-            System.out.println("Lowest gear is reverse. The car is now in reverse");
-        }else{
+            System.out.println("The car is now in reverse");
+            return true;
+        }else if(n < -1){
+            System.out.println("Cannot go in a lower gear than reverse");
+            return false;
+        }
+        else{
             this.gear = n;
             System.out.println("The car is now in gear: " + this.gear);
+            return true;
         }
     }
-    public void setSpeed(int n){
+    public boolean setSpeed(int n){
         if(n > maxSpeed){
             this.speed = maxSpeed;    // Cars max speed is 200 km/h
-            System.out.println("Cannot go quicker than 200 km/h. Speed is now: " + this.speed);
-        }else if(n < 0){
+            System.out.println("Cannot go quicker than " + this.maxSpeed + " km/h. Speed is now: " + this.speed);
+            return false;
+        }else if(n == 0){
             this.speed = 0;    // Cars min speed is 0 km/h
-            System.out.println("Cannot go slower than 0 km/h. Speed is now: " + this.speed);
+            System.out.println("Car stopped");
+            return true;
+        }else if(n < 0) {
+            System.out.println("Cannot go slower than 0");
+            return false;
         }else{
-            this.speed = n;
-            System.out.println("Speed is now: " + this.speed);
+          this.speed = n;
+          return true;
         }
     }
 
-    public void stop(){
+    public boolean stop(){
         this.speed = 0;
         this.gear = 0;
         System.out.println("Stopped. Speed is now: " + this.speed);
+        return true;
     }
 
-    public void turnRight(){
+    public boolean turnRight(){
         this.directionOfTravelDegrees = (this.directionOfTravelDegrees - 90) % 360;
         System.out.println("Turned Right, now direction of travel is " + directionOfTravelDegrees + " degrees");
+        return true;
     }
 
-    public void turnLeft(){
-        this.directionOfTravelDegrees =  (this.directionOfTravelDegrees + 90) % 360;;
+    public boolean turnLeft(){
+        this.directionOfTravelDegrees =  (this.directionOfTravelDegrees + 90) % 360;
         System.out.println("Turned left, now direction of travel is " + directionOfTravelDegrees + " degrees");
+        return true;
     }
 
-    public void turnAround(){
-        this.directionOfTravelDegrees =  (this.directionOfTravelDegrees + 180) % 360;;
+    public boolean turnAround(){
+        this.directionOfTravelDegrees =  (this.directionOfTravelDegrees + 180) % 360;
         System.out.println("Turned around, now direction of travel is " + directionOfTravelDegrees + " degrees");
+        return true;
     }
 
     public static void main(String[] args) {
